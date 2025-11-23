@@ -1,0 +1,598 @@
+{
+	"info": {
+		"_postman_id": "474afb6d-9c37-4725-917b-4a8113167514",
+		"name": "Deepeval",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4356174"
+	},
+	"item": [
+		{
+			"name": "Faithfulness",
+			"item": [
+				{
+					"name": "Faithful",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"metric\": \"faithfulness\",\n  \"query\": \"What is Selenium?\",\n  \"context\": [\n    \"Selenium is a web automation framework for testing web applications.\"\n  ],\n  \"output\": \"Selenium is a web automation framework for testing web applications.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/eval-only",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"eval-only"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Hallucinated",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"metric\": \"faithfulness\",\n  \"query\": \"What is Selenium?\",\n  \"context\": [\n    \"Selenium is a web automation framework for testing web applications.\"\n  ],\n  \"output\": \"It is a mineral found in soil and some foods, important for human health.\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/eval-only",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"eval-only"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "IDK",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"metric\": \"faithfulness\",\n  \"query\": \"What is Selenium?\",\n  \"context\": [\n    \"Selenium is a web automation framework for testing web applications.\"\n  ],\n  \"output\": \"I do not know what to say for this !!\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/eval-only",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"eval-only"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Hallucinated (Real)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"metric\": \"faithfulness\",\n  \"query\": \"What is Selenium?\",\n  \"context\": [\n    \"Selenium is a web automation framework for testing web applications.\"\n  ],\n  \"output\": \"It is a desktop application automation software\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/eval-only",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"eval-only"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Answer Relevancy",
+			"item": [
+				{
+					"name": "Very high relevancy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"metric\": \"answer_relevancy\",\n  \"query\": \"What is Selenium?\",\n  \"output\": \"Selenium is a web automation framework for testing web applications.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/eval-only",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"eval-only"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Partial answer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"metric\": \"answer_relevancy\",\n  \"query\": \"What is Selenium?\",\n  \"output\": \"It is used in software testing where it automate browsers and and it automates mobile native applications in ios and android like Appium.\",\n  \"context\": [\n    \"Selenium is a web automation framework for testing web applications.\"\n  ]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/eval-only",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"eval-only"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Irrelevant Answer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"metric\": \"answer_relevancy\",\n    \"query\": \"What is Selenium?\",\n    \"output\": \"Selenium was the winning team in last year’s robotics competition.\",\n    \"context\": [\n      \"Selenium is a web automation framework for testing web applications.\"\n    ]\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/eval-only",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"eval-only"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Contextual Recall",
+			"item": [
+				{
+					"name": "Good Recall",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"metric\": \"contextual_recall\",\n  \"query\": \"Salesforce login troubleshooting Steps\",\n  \"expected_output\": \"Steps to resolve Salesforce login issues: verify username, reset password, check SSO/SAML, network/allowlist, lockout, MFA.\",\n  \"context\": [\n    \"KB: Salesforce login error codes and fixes (invalid username/password, lockout, SSO).\",\n    \"Admin guide: Resetting user passwords and unlocking users in Salesforce.\",\n    \"Troubleshooting MFA login failures for Salesforce.\",\n    \"Network & allowlist: Salesforce trust domains, firewall/proxy, TLS/cipher requirements.\"\n  ],\n  \"output\": \"N/A\"\n}\n"
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/eval-only",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"eval-only"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Poor Recall",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"metric\": \"contextual_recall\",\n  \"query\": \"Salesforce login troubleshooting\",\n  \"expected_output\": \"Steps to resolve Salesforce login issues: verify username, reset password, check SSO/SAML, network/allowlist, lockout, MFA.\",\n  \"context\": [\n    \"Chennai office holiday list 2025.\",\n    \"Salesforce Lightning theming and branding guide.\",\n    \"ServiceNow SSO configuration overview.\"\n  ],\n  \"output\": \"N/A\"\n}\n"
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/eval-only",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"eval-only"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Contextual Precision",
+			"item": [
+				{
+					"name": "Good Precision",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"metric\": \"contextual_precision\",\n  \"query\": \"Salesforce login troubleshooting\",\n  \"expected_output\": \"Steps to resolve Salesforce login issues: verify username, reset password, check SSO/SAML, network, lockout, MFA.\",\n  \"context\": [\n    \"KB: Salesforce login error codes and fixes (invalid username/password, lockout, SSO)\",\n    \"Admin guide: Resetting user passwords and unlocking users in Salesforce\",\n    \"Troubleshooting MFA login failures for Salesforce\"\n  ],\n  \"output\": \"N/A\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/eval-only",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"eval-only"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Mixed Precision",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"metric\": \"contextual_precision\",\n  \"query\": \"Salesforce login troubleshooting\",\n  \"expected_output\": \"Steps to resolve Salesforce login issues: verify username, reset password, check SSO/SAML, network, lockout, MFA.\",\n  \"context\": [\n    \"Marketing Cloud campaign setup guide\",                             \n    \"Admin guide: Resetting user passwords and unlocking users\",        \n    \"KB: Salesforce login error codes and SSO/SAML troubleshooting\",    \n    \"Release notes: Lightning UI cosmetic updates (icons, themes)\"      \n  ],\n  \"output\": \"N/A\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/eval-only",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"eval-only"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Mostly irrelevant",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"metric\": \"contextual_precision\",\n  \"query\": \"Salesforce login troubleshooting\",\n  \"expected_output\": \"Steps to resolve Salesforce login issues: verify username, reset password, check SSO/SAML, network, lockout, MFA.\",\n  \"context\": [\n    \"Chennai holiday list 2025\",\n    \"Opportunity pipeline dashboards for Q4\",\n    \"How to build Einstein Analytics datasets\",\n    \"Resetting MFA devices for Salesforce users (only MFA step)\"\n  ],\n  \"output\": \"N/A\"\n}\n"
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/eval-only",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"eval-only"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Completness",
+			"item": [
+				{
+					"name": "High completeness",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"metric\": \"conversation_completeness\",\n  \"messages\": [\n    { \"role\": \"user\", \"content\": \"I can't log in to Salesforce; it says invalid username or password.\" },\n    { \"role\": \"assistant\", \"content\": \"Understood. Are you on SSO/MFA? Any recent lockouts shown in Login History?\" },\n    { \"role\": \"user\", \"content\": \"Yes, SSO and MFA enabled. Not sure about lockout.\" },\n    { \"role\": \"assistant\", \"content\": \"Try: 1) Verify username, 2) Unlock/reset password, 3) Check IdP SAML NameID, 4) Confirm MFA device/time sync, 5) Review Login History error code. Want the admin steps?\" },\n    { \"role\": \"user\", \"content\": \"How do I unlock a user?\" },\n    { \"role\": \"assistant\", \"content\": \"Setup → Users → select user → Unlock (and optionally Reset Password). If SSO, ensure NameID == username and minimal clock skew.\" }\n  ]\n}\n"
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/eval-only",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"eval-only"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Partially / bad complete",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"metric\": \"conversation_completeness\",\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": \"Salesforce login failing; we use SSO and MFA.\"\n    },\n    {\n      \"role\": \"assistant\",\n      \"content\": \"Let’s start with the SSO path: verify SAML NameID matches the Salesforce Username/Federation ID, ensure the IdP certificate isn’t expired, check for clock skew, and review Login History for specific error codes.\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"MFA still fails even after SSO succeeds.\"\n    },\n    {\n      \"role\": \"assistant\",\n      \"content\": \"Logout and restart your machine and take some rest.\"\n    }\n  ]\n}\n"
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/eval-only",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"eval-only"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Hallucination",
+			"item": [
+				{
+					"name": "High hallucination",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"query\": \"What is Selenium?\",\n  \"context\": [\"Selenium is a web automation framework for testing web applications.\"],\n  \"output\": \"Selenium is a CRM platform developed by Salesforce.\",\n  \"metric\": \"hallucination\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/eval-only",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"eval-only"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Low or no hallucination",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"query\": \"What is Selenium?\",\n  \"context\": [\"Selenium is a web automation framework for testing web applications.\"],\n  \"output\": \"Selenium is opensource web automation framework for testing web applications.\",\n  \"metric\": \"hallucination\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/eval-only",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"eval-only"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Metrics",
+			"item": [
+				{
+					"name": "Multiple Metric",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"query\": \"What is Selenium?\",\n  \"context\": [\"Selenium is a web automation framework for testing.\"],\n  \"output\": \"Selenium is used for web testing\",\n  \"expected_output\": \"Selenium is a web automation framework\",\n  \"metric\": [\"faithfulness\", \"answer_relevancy\", \"hallucination\"]\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/eval-only",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"eval-only"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Metric",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"query\": \"What is Selenium?\",\n  \"context\": [\"Selenium is a web automation framework for testing.\"],\n  \"output\": \"Selenium is used for web testing\",\n  \"expected_output\": \"Selenium is a web automation framework\",\n  \"metric\": \"all\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/eval-only",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"eval-only"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get Supported Metrics",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/metrics",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"metrics"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
